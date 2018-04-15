@@ -1,0 +1,12 @@
+1 Fried rice
+2 Plain white rice
+3 Plain brown rice
+10 Chive dumpling (steamed)
+11 Pork and shrimp dumpling (steamed)
+12 Mushroom dumpling (steamed)
+13 Pork and bitter melon dumpling (steamed)
+14 Cherry dumpling (steamed)
+20 Pork and shrimp dumpling (fried)
+21 Pork dumpling (fried)
+101 Bubble tea
+102 Ice tea
