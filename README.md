@@ -9,3 +9,4 @@
 # ECM-B12-Quantitative-Methods-in-Economics-II
 # MGEC72-Financial-Economics
 # CSC148-Introduction-to-Computer-Science
+# CSC108-Introduction-to-Computer-Programming
