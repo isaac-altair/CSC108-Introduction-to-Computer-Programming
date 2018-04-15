@@ -1,0 +1,43 @@
+<div class="menu" id="a2_menu" depth="11">
+    <ul>
+        <li id="back_menu"><a href="index.shtml">
+                <h2>home</h2>
+            </a>
+        </li>
+        <li><a href="homework/a2/index.shtml#overview">
+                <h2>overview</h2>
+                <span>What is this assignment about?</span>
+            </a>
+        </li>
+        <li><a href="homework/a2/index.shtml#algorithm">
+                <h2>algorithm</h2>
+                <span>What is the enciphering/deciphering algorithm?</span>
+            </a>
+        </li>
+        <li><a href="homework/a2/index.shtml#task1">
+                <h2>tasks</h2>
+                <span>What do I need to do for this assignment?</span>
+            </a>
+        </li>
+        <li><a href="homework/a2/index.shtml#marking">
+                <h2>marking + submission</h2>
+                <span>How will this assignment be marked?</span>
+            </a>
+        </li>
+        <li><a href="homework/a2/index.shtml#tips">
+                <h2>tips</h2>
+                <span>What should I keep in mind while doing this assignment?</span>
+            </a>
+        </li>
+        <li><a href="homework/a2/index.shtml#checklist">
+                <h2>checklist</h2>
+                <span>Have I remembered to...</span>
+            </a>
+        </li>
+        <li><a href="homework/a2/index.shtml#appendix">
+                <h2>example input</h2>
+                <span>Example secret keys and messages</span>
+            </a>
+        </li>
+    </ul>
+</div>

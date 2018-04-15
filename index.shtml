@@ -1,0 +1,236 @@
+<!--#include virtual="../../header.shtml"-->
+        <div id="menu_holder">
+<!--#include virtual="a2_menu.shtml"-->
+        </div>
+        <div id="main">
+            <h1>
+                Assignment 2: secret ciphers
+            </h1>
+            <div class="mini_calendar">
+    August 2013
+Su Mo Tu We Th Fr Sa
+             <u>1</u>  2  3
+ 4  5  6  7  8  9 10
+11 12 13 14 15 16 17
+18 19 20 21 22 23 24
+25 26 27 28 29 30 31</div>
+            <div id="overview">
+                <h2>Overview</h2>
+                <p>
+                    <table class="assignment_overview">
+                        <tbody>
+                            <tr>
+                                <td class="label">
+                                    Due
+                                </td>
+                                <td>
+                                    August 1, 2013 @ 10:45pm
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">
+                                    Partners
+                                </td>
+                                <td>
+                                    At most one other person (optional)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label" valign="top">
+                                    Concepts
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Calling methods</li>
+                                        <li>Lists</li>
+                                        <li>Files</li>
+                                        <li>Dictionaries</li>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+                <p>
+                    In this assignment, you will be writing a program to obscure a message in order to communicate secretly. The way this is done is using a one-to-one function (at least for the less exotic methods) and a secret key: using a secret key, any message (known as the plaintext) can be turned into a unique secret text (known as the cipher text) and, with the secret key, the cipher text can be turned back into the original message.
+                    Anyone not possessing the secret key will be unable to recover the plaintext. Note that the algorithm presented here is not suitable for real secret communication and can easily be deciphered using frequency analysis.
+                    
+                    All assignments will be tested on <a href="resources/cdf.shtml">CDF</a> so you should make sure your code works there.
+                </p>
+                <p>
+                    Make sure to apply what you have learned about good code style while writing exercises and from the previous assignment.
+                </p>
+                <p>
+                    <div class="cartouche warning"><h3>Warning</h3><p>Read through this entire handout before writing any code.</p></div>
+                </p>
+            </div>
+            <div id="algorithm">
+                <h2>Algorithm + Design</h2>
+                <p>
+                The enciphering (plaintext to cipher text) and deciphering (cipher text back to plaintext) for this assignment each consist of four stages.
+                
+                In order to encipher and/or decipher some text, one needs to know the secret key. The secret key consists of a number, (<i>n</i>), and an arbitrary number of pairs of characters ("mapping pairs" consisting first of a coding character followed by a ciphered character). The newline character will never appear as a coding or ciphered character (and will thus be unmodified between the plaintext and cipher text).
+                </p>
+                <h3>Enciphering</h3>
+                <h4>Stage 1</h4>
+                Add the string <tt>STOP</tt> to the end of the plaintext.
+                
+                <h4>Stage 2</h4>
+                Pad the result of stage 1 with spaces so that it is a multiple of <i>n</i>. For example, if the plaintext message is 10 characters long and <i>n</i> is 4, two spaces need to be added to the plaintext to pad it to length 12 (the next multiple of 4 greater than 10).
+                
+                <h4>Stage 3</h4>
+                Group the plaintext in to groups of <i>n</i> and reverse each group. For example, if the plaintext message is "GREETINGSCSC" and <i>n</i> is 4, the result of the group reversal would be "EERGGNITCSCS".
+                
+                <h4>Stage 4</h4>
+                For each character in the reversed groups, replace each coding character with its corresponding ciphered character from the mapping pairs. For example, if the pairs are <tt>AB</tt>, <tt>CD</tt>, and <tt>EF</tt>, all <tt>A</tt>s should be replaced with <tt>B</tt>s (but not vice versa), all <tt>C</tt>s should be replaced with <tt>D</tt>s (but not vice versa), and all <tt>E</tt>s should be replaced with <tt>F</tt>s (but not vice versa),
+                
+                <h3>Deciphering</h3>
+                The deciphering process undoes each of the steps from the enciphering process in reverse order.
+                
+                <h4>Stage 1</h4>
+                Replace each ciphered character with the original coding character.
+                
+                <h4>Stage 2</h4>
+                Group the characters into groups of <i>n</i> and reverse each group.
+                
+                <h4>Stage 3</h4>
+                Strip off empty spaces from the end of the string.
+                
+                <h4>Stage 4</h4>
+                Remove the word "STOP" from the end of the string.
+                
+                <h3>Running the program</h3>
+                The user is prompted for the name of a secret key file. Next, the user is prompted for the name of a file to encipher/decipher.
+                If the file is a plaintext file, the file is enciphered with the secret key in the secret key file. Otherwise, the deciphered text is displayed on screen.
+                
+                <h3>Secret key file format</h3>
+                The secret key file will contain the character group length on the first line. Each remaining line in the file will contain a mapping pair. See <a href="index.html#appendix">example files</a>.
+                
+            </div>
+            
+            <div id="task1">
+                <h2>Task 1: Download the starter code</h2>
+                <p>
+                    Download the assignment <a href="homework/a2/a2.py">starter code</a> and open it in IDLE using File -&gt; Open menu item.
+                </p>
+            </div>
+            <div id="task2">
+                <h2>Task 2: Read through the starter code</h2>
+                <p>
+                    Read the starter code and understand what it is supposed to do and how the different functions relate to each other. Pay particular attention to how each function is being called to figure out its return type and the types of its inputs. You might want to start reading the <tt>__main__</tt> block. You will probably need to read through the starter code more than once.
+                    You will need to update the docstrings; some of them are incomplete and/or do not adhere to our guidelines. Remember that you do not need to include example function calls for functions that do input/output.
+                </p>
+            </div>
+            <div id="task3">
+                <h2>Task 3: Write unit tests</h2>
+                <p>
+                    Write unit tests for encipher function. For this assignment, you do not need to write docstrings for your unit tests.
+                </p>
+            </div>            
+            <div id="task4">
+                <h2>Task 4: Complete the functions in the starter code.</h2>
+                <p>
+                    Complete the functions provided. Remember to save and click "run" each time you make a change to your program or else you will be using an older copy of your code. You may find it helpful to write helper function stubs that always return the same value while working on the assignment. Remember to test each function thoroughly. Think about what can go wrong.
+                </p>
+            </div>
+            <div id="task5">
+                <h2>Task 5: Clean up your code.</h2>
+                <p>
+                    If you have been adhering to good code style all along, this step will be fairly straight forward. At this point, all that should be left is adding in a few missing comments, renaming some variables, or finding duplicated code and turning it into a function.
+                </p>
+            </div>
+            <div id="marking">
+                <h2>Marking + Submission</h2>
+                Your submission will be marked on the following criteria:
+                <ul class="bullet">
+                    <li>
+                        Unit tests (do you have good unit tests?) - 10%;
+                    </li>
+                    <li>
+                        Correctness (does your program behave correctly?) - 50%;
+                    </li>
+                    <li>
+                        Style (does your code adhere to Python style conventions discussed in class?) - 20%;
+                    </li>
+                    <li>
+                        Commenting (does your code have proper comments and docstrings?) - 10%; and
+                        <ul>
+                            <li>
+                                Remember that inline (#) comments should explain how a section of code works or what it does.
+                            </li>
+                            <li>
+                                Remember that docstrings should give details on what a function does but <b>not how it does it</b>.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Design (is your program split into logical components and does it make use of helper functions and constants?) - 10%.
+                    </li>
+                </ul>
+                <br>
+                Submit your solution to <a href="https://markus.cdf.toronto.edu/csc108-2013-05/en/main">MarkUs</a>. You will need your CDF user name and password. If you are working as part of a pair, you will need to indicate this on MarkUs. Only one group member should submit the assignment. If you are working alone, you do not need to do anything special.
+                Adding code that we do not expect may cause your program to fail our automated tests. Make sure your output is exactly the same as ours and that that there are no extra spaces at the end of any of your lines.
+            </div>
+            <div id="tips">
+                <h2>Tips</h2>
+                <ul class="bullet">
+                    <li>
+                        Everything you need to know to complete the exercise was covered in lecture by the end of <a href="weekly.shtml#">week 9</a>.
+                    </li>
+                    <li>
+                        Start early. This assignment is much larger than any of the exercises you have done up to this point.
+                    </li>
+                    <li>
+                        Not including comments and docstrings, most of your functions should be between 3 and 5 lines long, although some may be as short as one line and some as long as 10 lines. If you find yourself writing a function longer than 15 lines, consider whether you should write a helper function or if there is an easier way to do what you are trying to do.
+                    </li>
+                    <li>
+                        Run the <a href="homework/a2/type_check.py">type checker</a> on your code by saving it in the same directory as your solution and running the type checker. It is very much NOT a substitute for writing your own tests.
+                    </li>
+                </ul>
+            </div>
+            <div id="checklist">
+                <h2>Checklist</h2>
+                Have you remembered to...
+                <ul class="bullet">
+                    <li>
+                        Test your code on CDF?
+                    </li>
+                    <li>
+                        Submit your assignment to MarkUs?
+                    </li>
+                </ul>
+            </div>
+            <div id="appendix">
+                <h2>Example secret keys and messages</h2>
+                <h3>Secret 1</h3>
+                <a href="homework/a2/secret1.key">Key file</a>
+                <a href="homework/a2/secret1.enc">Cipher text</a>
+                <h3>Secret 2</h3>
+                <a href="homework/a2/secret2.key">Key file</a>
+                <a href="homework/a2/secret2.enc">Cipher text</a>
+                <h3>Secret 3</h3>
+                <a href="homework/a2/secret3.key">Key file</a>
+                <a href="homework/a2/secret3.enc">Cipher text</a>
+
+
+<!--
+        <li><a href="homework/e1/index.shtml#tips">
+                <h2>tips</h2>
+                <span>What should I keep in mind while doing this exercise?</span>
+            </a>
+        </li>
+        <li><a href="homework/e1/index.shtml#checklist">
+                <h2>checklist</h2>
+                <span>Have I remembered to...</span>
+            </a>
+        </li>
+-->
+
+    <script>
+        $(
+            function() {
+                $('#game1').hide();
+                $('#game2').hide();                
+            }
+        );
+    </script>
+<!--#include virtual="../../footer.shtml"-->
